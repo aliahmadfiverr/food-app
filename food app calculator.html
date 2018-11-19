@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h2>Price Calculator</h2>
+
+        <table border="1" cellpadding = "5px" cellspacing = "5px">
+            
+                <tr>
+                    <td>Item Name</td>
+                    <td>Selection</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                </tr>
+                <tr>
+                    <td>Biryani</td>
+                    <td><input class = 'dish' type="checkbox"></td>
+                    <td>150</td>
+                    <td><input type="number" value=""></td>  
+                </tr>
+                <tr>
+                        <td>Samosa</td>
+                        <td><input class = 'dish' type="checkbox"></td>
+                        <td>25</td>
+                        <td><input type="number" value=""></td>  
+                </tr> 
+                <tr>
+                        <td>bottle</td>
+                        <td><input class = 'dish' type="checkbox"></td>
+                        <td>25</td>
+                        <td><input type="number" value=""></td>  
+                </tr>
+                <tr>
+                        <td>shawarma</td>
+                        <td><input class = 'dish' type="checkbox"></td>
+                        <td>100</td>
+                        <td><input type="number" value=""></td>  
+                </tr>
+                <tr>
+                    <td><button onclick = 'calculate()' >Calculate</button></td>
+                    <td><input id="total" type="text" placeholder="total Bill"></td>
+                    <td><button onclick="clearAll()">Escape</button></td>
+                </tr>
+        </table>
+    </div>
+
+    <script>
+        function calculate(){
+            let dishes = document.querySelectorAll('.dish');
+            let totalBill = 0;
+            // Let total
+        
+        dishes.forEach(function(dish){
+            if(dish.checked){
+            let price = +dish.parentNode.nextElementSibling.innerText;
+            
+            let qty = +dish.parentNode.nextElementSibling.nextElementSibling.querySelector('input').value;
+            totalBill += price*qty;
+            document.getElementById('total').value = totalBill;
+
+            }
+        });
+        // document.onkeydown = function(press){
+        //     if(press.key == "Enter"){
+        //         calculate();
+        }
+        
+        document.onkeydown = function(press){
+            if(press.key == "Enter"){
+                calculate();
+            }
+        };
+        // function clearAll(){
+        // document.onkeydown = function(press){
+        //     if(press.key == "Escape"){
+        //        if(document.querySelectorAll('.dish').checked = true){
+        //         document.querySelectorAll('.dish').checked = false; 
+              
+            
+        //     }
+        //     }
+        // };
+
+        // }
+
+       
+    </script>
+</body>
+</html>
